@@ -173,8 +173,8 @@ def main(eventMessages: func.EventHubEvent):
             eventMessages = [eventMessages]
             cardinality = 'one'
         for eventMessage in eventMessages:
-            print("Received eventMessage : ", eventMessage)
             payload = json.loads(eventMessage.get_body().decode('utf-8'))
+            print("Received payload : ", payload)
             log_events = payload['records'] if cardinality == 'many' else payload[0]['records']
 
             log_category = ''
